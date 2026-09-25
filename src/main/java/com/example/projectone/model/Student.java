@@ -13,7 +13,17 @@ public class Student {
     private Long id;
     private String name;
     private String email;
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     private String course;
+    private String password;
     private int age;
 
     public Long getId() {
