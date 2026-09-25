@@ -28,7 +28,7 @@ out/
 !.env.example
 application.properties
 application-local.properties
-# Operating system files
+
 .DS_Store
 Thumbs.db
 
