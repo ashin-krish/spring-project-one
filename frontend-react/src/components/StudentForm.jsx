@@ -32,49 +32,40 @@ function StudentForm() {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
+        <section className="form-panel">
+            <div className="section-heading">
+                <div>
+                    <p className="eyebrow">New record</p>
+                    <h2>Add a student</h2>
+                </div>
+                <span className="section-number">01</span>
+            </div>
+            <form className="student-form" onSubmit={handleSubmit}>
 
-            <input
-                name="name"
-                placeholder="Name"
-                value={student.name}
-                onChange={handleChange}
-            />
+                <label>Full name
+                    <input name="name" placeholder="e.g. Alex Morgan" value={student.name} onChange={handleChange} />
+                </label>
 
-            <input
-                name="email"
-                placeholder="Email"
-                value={student.email}
-                onChange={handleChange}
-            />
+                <label>Email address
+                    <input name="email" placeholder="alex@example.com" value={student.email} onChange={handleChange} />
+                </label>
 
-            <input
-                name="course"
-                placeholder="Course"
-                value={student.course}
-                onChange={handleChange}
-            />
+                <label>Course
+                    <input name="course" placeholder="e.g. Computer Science" value={student.course} onChange={handleChange} />
+                </label>
 
-            <input
-                name="password"
-                placeholder="Password"
-                value={student.password}
-                onChange={handleChange}
-            />
+                <label>Password
+                    <input name="password" placeholder="Create a password" value={student.password} onChange={handleChange} />
+                </label>
 
-            <input
-                name="age"
-                type="number"
-                placeholder="Age"
-                value={student.age}
-                onChange={handleChange}
-            />
+                <label className="age-field">Age
+                    <input name="age" type="number" placeholder="21" value={student.age} onChange={handleChange} />
+                </label>
 
-            <button type="submit">
-                Add Student
-            </button>
+                <button className="primary-button" type="submit">Add student <span aria-hidden="true">+</span></button>
 
-        </form>
+            </form>
+        </section>
     );
 }
 
