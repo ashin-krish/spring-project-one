@@ -1,9 +1,11 @@
 package com.example.projectone.service;
 
 
+import com.example.projectone.config.SecurityConfig;
 import com.example.projectone.model.Student;
 import com.example.projectone.repo.StudentRepository;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -13,15 +15,18 @@ import java.util.Optional;
 public class StudentService
 {
     final private StudentRepository studentRepository;
+    private final PasswordEncoder passwordEncoder;
 
-   public StudentService(StudentRepository studentRepository)
+    public StudentService(StudentRepository studentRepository,  PasswordEncoder passwordEncoder)
     {
         this.studentRepository=studentRepository;
+        this.passwordEncoder = passwordEncoder;
     }
 
     public Student saveStudent(Student student)
     {
-       return studentRepository.save(student);
+        student.setPassword(passwordEncoder.encode(student.getPassword()));
+        return studentRepository.save(student);
     }
 
     public boolean deleteStudent(long id)

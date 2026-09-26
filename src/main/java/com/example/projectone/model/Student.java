@@ -24,7 +24,16 @@ public class Student {
 
     private String course;
     private String password;
+    private String role;
     private int age;
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public Long getId() {
         return id;
