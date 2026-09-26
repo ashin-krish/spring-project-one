@@ -25,3 +25,19 @@ export async function createStudent(student) {
 
     return response.json();
 }
+
+export async function updateStudent(student) {
+    const response = await fetch(`${API_URL}/update`, {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(student)
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to update student");
+    }
+
+    return response.json();
+}
