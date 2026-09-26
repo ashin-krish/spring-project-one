@@ -1,5 +1,9 @@
 import { useEffect, useState } from "react";
-import { getStudents, updateStudent } from "../service/api";
+import {
+    getStudents,
+    updateStudent,
+    deleteStudent
+} from "../service/api";
 
 function Students() {
 
@@ -20,12 +24,14 @@ function Students() {
             });
     };
 
+    // Start editing
     const handleEdit = (student) => {
         setEditingStudent({
             ...student
         });
     };
 
+    // Handle changes in edit fields
     const handleChange = (event) => {
         const { name, value } = event.target;
 
@@ -35,6 +41,7 @@ function Students() {
         });
     };
 
+    // Save updated student
     const handleUpdate = async () => {
         try {
             const updatedStudent = await updateStudent(editingStudent);
@@ -54,21 +61,40 @@ function Students() {
         }
     };
 
+    // Cancel editing
     const handleCancel = () => {
         setEditingStudent(null);
     };
 
+    // Delete student
+    const handleDelete = async (id) => {
+        try {
+            await deleteStudent(id);
+
+            setStudents(
+                students.filter(student => student.id !== id)
+            );
+
+        } catch (error) {
+            console.error(error);
+        }
+    };
+
     return (
         <div>
+
             <h1>Students</h1>
 
             {students.map(student => (
+
                 <div key={student.id}>
 
                     {editingStudent &&
                     editingStudent.id === student.id ? (
 
+                        // EDIT MODE
                         <div>
+
                             <p>Name: {student.name}</p>
 
                             <label>
@@ -104,11 +130,14 @@ function Students() {
                             <button onClick={handleCancel}>
                                 Cancel
                             </button>
+
                         </div>
 
                     ) : (
 
+                        // NORMAL MODE
                         <div>
+
                             <p>Name: {student.name}</p>
                             <p>Email: {student.email}</p>
                             <p>Course: {student.course}</p>
@@ -117,13 +146,21 @@ function Students() {
                             <button onClick={() => handleEdit(student)}>
                                 Update
                             </button>
+
+                            <button onClick={() => handleDelete(student.id)}>
+                                Delete
+                            </button>
+
                         </div>
+
                     )}
 
                     <hr />
 
                 </div>
+
             ))}
+
         </div>
     );
 }

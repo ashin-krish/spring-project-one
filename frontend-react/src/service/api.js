@@ -41,3 +41,15 @@ export async function updateStudent(student) {
 
     return response.json();
 }
+
+export async function deleteStudent(id) {
+    const response = await fetch(`${API_URL}/delete/${id}`, {
+        method: "DELETE"
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to delete student");
+    }
+
+    return response.json();
+}
