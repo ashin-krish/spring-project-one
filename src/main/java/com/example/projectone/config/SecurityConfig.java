@@ -28,9 +28,10 @@ final private MyUserDetailService userDetailService;
     {
       return httpSecurity.cors(Customizer.withDefaults())
               .csrf(csrf -> csrf.disable())
-              .authorizeHttpRequests(auth -> auth.anyRequest().permitAll())
+              .authorizeHttpRequests(auth -> auth.
+                      requestMatchers("/login").permitAll()
+                      .anyRequest().permitAll())
               .build();
-
     }
 
     @Bean
