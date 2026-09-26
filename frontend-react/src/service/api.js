@@ -9,3 +9,19 @@ export async function getStudents() {
 
     return response.json();
 }
+
+export async function createStudent(student) {
+    const response = await fetch(`${API_URL}/save`, {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(student)
+    });
+
+    if (!response.ok) {
+        throw new Error("Failed to create student");
+    }
+
+    return response.json();
+}
