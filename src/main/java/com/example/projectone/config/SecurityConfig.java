@@ -30,6 +30,8 @@ final private MyUserDetailService userDetailService;
               .csrf(csrf -> csrf.disable())
               .authorizeHttpRequests(auth -> auth.
                       requestMatchers("/login").permitAll()
+                      .requestMatchers("/profile").authenticated()
+                      .requestMatchers("/api/student/**").authenticated()
                       .anyRequest().permitAll())
               .build();
     }

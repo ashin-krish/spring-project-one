@@ -24,6 +24,22 @@ button, input { font: inherit; }
 button { cursor: pointer; }
 #root { min-height: 100vh; }
 
+.login-page { display: grid; place-items: center; min-height: 100vh; padding: 32px 20px; background: radial-gradient(circle at 84% 12%, rgba(217, 109, 87, .14), transparent 27%), radial-gradient(circle at 5% 94%, rgba(18, 107, 103, .12), transparent 30%), var(--canvas); }
+.login-panel { width: min(100%, 452px); padding: 42px; border: 1px solid rgba(223, 231, 228, .9); border-radius: 14px; background: rgba(255, 255, 255, .92); box-shadow: 0 24px 70px rgba(26, 62, 58, .13); }
+.login-intro { margin-bottom: 34px; }
+.login-intro .header-mark { margin-bottom: 33px; }
+.login-intro h1 { margin-bottom: 14px; font-size: clamp(42px, 9vw, 62px); }
+.login-copy { max-width: 330px; color: var(--muted); font-size: 15px; line-height: 1.6; }
+.login-form { display: grid; gap: 19px; }
+.login-form label { gap: 8px; }
+.login-form input { padding: 14px; background: #fbfdfc; }
+.login-error { margin: -4px 0 0; padding: 11px 12px; border: 1px solid #f1c7bd; border-radius: 7px; color: #a34b3d; background: #fff4f1; font-size: 13px; line-height: 1.4; }
+.login-button { display: flex; align-items: center; justify-content: center; width: 100%; min-height: 47px; margin-top: 3px; }
+.login-button span { margin-left: 9px; font-size: 19px; line-height: 0; }
+.login-button:disabled { cursor: wait; opacity: .7; }
+.login-footer { margin: 25px 0 0; color: var(--muted); font-size: 11px; text-align: center; }
+.session-loading { display: grid; place-items: center; min-height: 100vh; color: var(--teal); font: 500 18px Georgia, serif; background: var(--canvas); }
+
 .app-shell { width: min(1080px, calc(100% - 40px)); margin: 0 auto; padding: 56px 0 72px; }
 .app-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 42px; }
 .eyebrow { margin: 0 0 9px; color: var(--coral); font-size: 11px; font-weight: 800; letter-spacing: 1.8px; text-transform: uppercase; }
@@ -75,6 +91,10 @@ input:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(18, 107, 103
 .empty-state { padding: 30px; border: 1px dashed var(--line); border-radius: 9px; color: var(--muted); text-align: center; font-size: 14px; }
 
 @media (max-width: 700px) {
+  .login-page { padding: 18px 12px; }
+  .login-panel { padding: 29px 22px; }
+  .login-intro { margin-bottom: 28px; }
+  .login-intro .header-mark { margin-bottom: 26px; }
   .app-shell { width: min(100% - 24px, 560px); padding: 30px 0 48px; }
   .app-header { margin-bottom: 30px; }
   .header-mark { width: 44px; height: 44px; }
